@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -20,10 +21,10 @@
                 <h1 class="my-3">Category List</h1>
 
                 <div style="display:flex;justify-content:end">
-                    <a href="" class="btn btn-primary">Add</a>
+                    <a href="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">Add</a>
 
                 </div><br>
-                <a href="{{ route('product.index') }}" class="btn btn-primary">Product</a>
+                <a href="{{ route('product.index') }}" class="btn btn-primary" >Product</a>
                 <div class="table">
 
                     <table class="table table-hover my-3">
@@ -37,15 +38,17 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($categories as $category)
                                 <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
+                                    <th scope="row">{{$loop->iteration }}</th>
+                                    <td>{{ $category->title }}</td>
+                                    <td>{{ $category->is_active }}</td>
                                     <td>
                                         <a href="" class="btn btn-secondary">Edit</a>
                                         <a href="" class="btn btn-danger">Delete</a>
                                     </td>
                                 </tr>
+                                @endforeach
 
                             </tbody>
                         </table>

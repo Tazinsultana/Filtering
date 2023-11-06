@@ -17,7 +17,7 @@
                 <h1 class="my-3">Product List</h1>
 
                 <div style="display:flex;justify-content:end">
-                    <a href="" class="btn btn-primary">Add</a>
+                    <a href="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">Add</a>
 
                 </div><br>
                 <a href="{{ route('category.index') }}" class="btn btn-primary">Back</a>

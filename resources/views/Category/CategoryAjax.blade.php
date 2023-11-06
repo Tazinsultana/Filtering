@@ -1,0 +1,44 @@
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+</script>
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+</script>
+
+<script>
+    $(document).ready(function() {
+        // alert();
+
+        // For Create......
+        $(document).on('click','.add_cat',function(e){
+e.preventDefault();
+let title=$('#title').val();
+let is_active=$('#is_active').val();
+
+$.ajax({
+data:"{{ route('category.insert') }}",
+method:"POST",
+data:{
+    title,
+    is_active
+},
+success:function(res){
+    console.log(res);
+}
+
+
+})
+// console.log(title,is_active);
+
+
+
+        })
+
+    });
+</script>
