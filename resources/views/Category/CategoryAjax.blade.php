@@ -22,19 +22,22 @@
             let is_active = $('#is_active').is(":checked");
 
             $.ajax({
-                data:"{{ route('category.insert') }}",
+                url:"{{ route('category.insert') }}",
                 method:'POST',
                 data: {
                     title,
                     is_active,
                     // _token:'{{ csrf_token() }}',
                 },
-                success: function(res) {
 
-                    if(res.status=='successs'){
-                        $('#addmodal').modal('hide');
+                success:function(res) {
+
+                    if(res.status=='success'){
+                        $('#addModal').modal('hide');
                         $('#add')[0].reset();
+                        // $('.table').load(location.href +' .table');
                         $('.table').load(location.href + ' .table');
+
 
                     }
                 }
@@ -46,6 +49,9 @@
 
 
         })
+
+
+
 
     })
 </script>

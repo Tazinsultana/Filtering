@@ -24,24 +24,24 @@
                     <a href="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">Add</a>
 
                 </div><br>
-                <a href="{{ route('product.index') }}" class="btn btn-primary" >Product</a>
+                <a href="{{ route('product.index') }}" class="btn btn-primary">Product</a>
 
-                <div class="table">
+                <div class="table-data">
 
-                    <table class="table table-hover my-3">
-                        <table class="table">
-                            <thead>
+
+                    <table class="table my-3">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Is Active</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($categories as $category)
                                 <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Title</th>
-                                    <th scope="col">Is Active</th>
-                                    <th scope="col">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($categories as $category)
-                                <tr>
-                                    <th scope="row">{{$loop->iteration }}</th>
+                                    <th scope="row">{{ $loop->iteration }}</th>
                                     <td>{{ $category->title }}</td>
                                     <td>{{ $category->is_active }}</td>
                                     <td>
@@ -49,11 +49,11 @@
                                         <a href="" class="btn btn-danger">Delete</a>
                                     </td>
                                 </tr>
-                                @endforeach
+                            @endforeach
 
-                            </tbody>
-                        </table>
+                        </tbody>
                     </table>
+
                 </div>
 
 

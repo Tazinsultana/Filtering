@@ -17,17 +17,16 @@ class CategoryController extends Controller
     public function Create(Request $request)
 
     {
-
         // dd($request->all());
         $request->validate(
             [
                 'title' => 'required|unique:categories',
 
             ],
-            [
-                'title.required' => 'Title is requried',
-                'title.unique' => 'Already Exists'
-            ]
+            // [
+            //     'title.required' => 'Title is requried',
+            //     'title.unique' => 'Already Exists'
+            // ]
         );
 
         $title = $request->title;
@@ -37,11 +36,14 @@ class CategoryController extends Controller
             'title' => $title,
             'is_active' => $active
         ]);
-        // dd($category);
+
         return response()->json([
 
             'status' => 'success',
 
         ]);
+
+
+
     }
 }
