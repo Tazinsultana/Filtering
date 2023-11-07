@@ -45,9 +45,9 @@
                                     <td>{{ $category->title }}</td>
                                     <td>
                                         @if ($category->is_active)
-                                            <span class="badge text-bg-success">Active</span>
+                                            <span class="badge bg-success">Active</span>
                                         @else
-                                            <span class="badge text-bg-danger">InActive</span>
+                                            <span class="badge bg-danger">InActive</span>
                                         @endif
                                     </td>
                                     <td>

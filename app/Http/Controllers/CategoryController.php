@@ -59,7 +59,7 @@ class CategoryController extends Controller
     {
 
         // dd($request->all());
-        $category = category::where('id', $request->id)->get();
+        $category = category::where('id', $request->id)->first();
         return response()->json([
             'status' => 'success',
             'data' => $category,
