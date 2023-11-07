@@ -1,6 +1,8 @@
 <!-- Modal -->
 <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
+        <form action=" " method="post" id="add">
+            @csrf
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Category title</h5>
@@ -18,12 +20,13 @@
                         <label class="form-check-label" for="exampleCheck1">Check me out</label>
                     </div>
 
-                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary add_cat">Save</button>
             </div>
         </div>
+
+    </form>
     </div>
 </div>

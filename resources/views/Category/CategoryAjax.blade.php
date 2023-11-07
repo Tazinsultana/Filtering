@@ -16,29 +16,36 @@
         // alert();
 
         // For Create......
-        $(document).on('click','.add_cat',function(e){
-e.preventDefault();
-let title=$('#title').val();
-let is_active=$('#is_active').val();
+        $(document).on('click', '.add_cat', function(e) {
+            e.preventDefault();
+            let title = $('#title').val();
+            let is_active = $('#is_active').is(":checked");
 
-$.ajax({
-data:"{{ route('category.insert') }}",
-method:"POST",
-data:{
-    title,
-    is_active
-},
-success:function(res){
-    console.log(res);
-}
+            $.ajax({
+                data:"{{ route('category.insert') }}",
+                method:'POST',
+                data: {
+                    title,
+                    is_active,
+                    // _token:'{{ csrf_token() }}',
+                },
+                success: function(res) {
+
+                    if(res.status=='successs'){
+                        $('#addmodal').modal('hide');
+                        $('#add')[0].reset();
+                        $('.table').load(location.href + ' .table');
+
+                    }
+                }
 
 
-})
-// console.log(title,is_active);
+            })
+
 
 
 
         })
 
-    });
+    })
 </script>

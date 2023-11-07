@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!dOCTYPE html>
 <html lang="en">
 
 <head>
@@ -25,6 +25,7 @@
 
                 </div><br>
                 <a href="{{ route('product.index') }}" class="btn btn-primary" >Product</a>
+
                 <div class="table">
 
                     <table class="table table-hover my-3">
@@ -64,7 +65,7 @@
 
     @include('Category.addModal')
     @include('Category.CategoryAjax')
-    @include('Category.updatemodal')
+    {{-- @include('Category.updatemodal') --}}
 </body>
 
 </html>

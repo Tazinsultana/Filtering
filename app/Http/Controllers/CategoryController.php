@@ -7,30 +7,41 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function Index(){
-        $categories=category::latest()->get();
+    public function Index()
+    {
+        $categories = category::latest()->get();
 
-        return view('Category.index',compact('categories'));
+        return view('Category.index', compact('categories'));
     }
-// Create.....
-    public function Create(Request $request){
+    // Create.....
+    public function Create(Request $request)
 
-// dd($request->all());
+    {
 
-$title=$request->title;
-$active=$request->is_active =="true" ? true:false;
-// dd($active);
-$category=category::create([
-    'title'=> $title,
-    'is_active'=> $active
-]);
-dd($category);
-return response()->json([
+        // dd($request->all());
+        $request->validate(
+            [
+                'title' => 'required|unique:categories',
 
-    'status'=> 'success',
-    'data'=>$category
-]);
+            ],
+            [
+                'title.required' => 'Title is requried',
+                'title.unique' => 'Already Exists'
+            ]
+        );
 
+        $title = $request->title;
+        $active = $request->is_active == "true" ? true : false;
+        // dd($active);
+        category::create([
+            'title' => $title,
+            'is_active' => $active
+        ]);
+        // dd($category);
+        return response()->json([
 
-}
+            'status' => 'success',
+
+        ]);
+    }
 }
