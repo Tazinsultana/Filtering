@@ -50,6 +50,27 @@
 
         })
 
+        // For Delete......
+        $(document).on('click','.delete_category',function(e){
+            e.preventDefault();
+            let id=$(this).data('id');
+            if (confirm('Are you sure to delte list??')) {
+
+            $.ajax({
+                url:"{{ route('category.delete') }}",
+                method:'DELETE',
+                data:{id},
+                success:function(res){
+                    if(res.status=='success'){
+                        $('.table').load(location.href + ' .table');
+
+
+                    }
+                }
+            })
+        }
+        })
+
 
 
 

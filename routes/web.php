@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 // For Category......
 Route::get('/category',[CategoryController::class,'Index'])->name('category.index');
 Route::post('/insert',[CategoryController::class,'Create'])->name('category.insert');
+Route::delete('/delete',[CategoryController::class,'Delete'])->name('category.delete');
 
 // For Product.....
 Route::get('/product',[ProductController::class,'Index'])->name('product.index');

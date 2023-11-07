@@ -42,8 +42,16 @@ class CategoryController extends Controller
             'status' => 'success',
 
         ]);
+    }
 
+    // for delete.....
+    public function Delete(Request $request)
+    {
+        // dd($request->all());
+        category::where('id', $request->id)->delete();
 
-
+        return response()->json([
+            'status' => 'success',
+        ]);
     }
 }

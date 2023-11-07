@@ -46,7 +46,8 @@
                                     <td>{{ $category->is_active }}</td>
                                     <td>
                                         <a href="" class="btn btn-secondary">Edit</a>
-                                        <a href="" class="btn btn-danger">Delete</a>
+                                        <a href="" class="btn btn-danger delete_category"
+                                        data-id="{{ $category->id }}">Delete</a>
                                     </td>
                                 </tr>
                             @endforeach
