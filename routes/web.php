@@ -22,6 +22,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/category',[CategoryController::class,'Index'])->name('category.index');
 Route::post('/insert',[CategoryController::class,'Create'])->name('category.insert');
 Route::delete('/delete',[CategoryController::class,'Delete'])->name('category.delete');
+Route::get('/edit',[CategoryController::class,'Edit'])->name('category.edit');
+Route::put('/update',[CategoryController::class,'Update'])->name('category.update');
 
 // For Product.....
 Route::get('/product',[ProductController::class,'Index'])->name('product.index');

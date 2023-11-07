@@ -17,7 +17,7 @@
 
                     <div class="mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="is_active" name="is_active">
-                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                        <label class="form-check-label" for="is_active">Check me out</label>
                     </div>
 
             </div>

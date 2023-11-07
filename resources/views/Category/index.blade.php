@@ -39,15 +39,22 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($categories as $category)
+                            @foreach ($categories as $key=> $category)
                                 <tr>
                                     <th scope="row">{{ $loop->iteration }}</th>
                                     <td>{{ $category->title }}</td>
-                                    <td>{{ $category->is_active }}</td>
                                     <td>
-                                        <a href="" class="btn btn-secondary">Edit</a>
+                                        @if ($category->is_active)
+                                            <span class="badge text-bg-success">Active</span>
+                                        @else
+                                            <span class="badge text-bg-danger">InActive</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <a href="" class="btn btn-secondary edit_category" data-bs-toggle="modal"
+                                            data-bs-target="#updateModal" data-id="{{ $category->id }}">Edit</a>
                                         <a href="" class="btn btn-danger delete_category"
-                                        data-id="{{ $category->id }}">Delete</a>
+                                            data-id="{{ $category->id }}">Delete</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -66,7 +73,7 @@
 
     @include('Category.addModal')
     @include('Category.CategoryAjax')
-    {{-- @include('Category.updatemodal') --}}
+    @include('Category.updatemodal')
 </body>
 
 </html>

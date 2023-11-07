@@ -54,4 +54,38 @@ class CategoryController extends Controller
             'status' => 'success',
         ]);
     }
+    // For Edit......
+    public function Edit(Request $request)
+    {
+
+        // dd($request->all());
+        $category = category::where('id', $request->id)->get();
+        return response()->json([
+            'status' => 'success',
+            'data' => $category,
+        ]);
+    }
+
+    // For Update.....
+    public function Update(Request $request)
+    {
+        $request->validate(
+            [
+                'title' => 'required|unique:categories,title,' . $request->id,
+            ],
+
+        );
+        $title = $request->title;
+        $active = $request->is_active == "true" ? true : false;
+
+        category::where('id', $request->id)->update([
+            'title' => $title,
+            'is_active' => $active
+
+        ]);
+        return response()->json([
+            'status' => 'success',
+
+        ]);
+    }
 }
