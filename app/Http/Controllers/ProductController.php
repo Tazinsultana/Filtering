@@ -41,4 +41,17 @@ class ProductController extends Controller
             'status' => 'success',
         ]);
     }
+
+    // For Edit.....
+    public function Edit(Request $request){
+        // // dd($request->all());
+        
+        $product=product::where('id',$request->product_id)->first();
+        //  dd($product);
+        return response()->json([
+            'status' => 'success',
+            'data' => $product
+        ]);
+
+    }
 }

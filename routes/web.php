@@ -29,3 +29,4 @@ Route::put('/update',[CategoryController::class,'Update'])->name('category.updat
 Route::get('/product',[ProductController::class,'Index'])->name('product.index');
 Route::post('/product-create',[ProductController::class,'Create'])->name('product.create');
 Route::delete('/product-delete',[ProductController::class,'Delete'])->name('product.delete');
+Route::get('/product-edit',[ProductController::class,'Edit'])->name('product.edit');

@@ -51,7 +51,8 @@
                                     <td>{{ $product->description }} </td>
                                     <td>{{ $product->category->title }}</td>
                                     <td>
-                                        <a href="" class="btn btn-secondary">Edit</a>
+                                        <a href="" class="btn btn-secondary product_edit" data-bs-toggle="modal"
+                                            data-bs-target="#UpdateModal" data-id="{{ $product->id }}">Edit</a>
                                         <a href="" class="btn btn-danger delete_product"
                                             data-id="{{ $product->id }}">Delete</a>
                                     </td>

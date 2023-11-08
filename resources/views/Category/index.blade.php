@@ -72,8 +72,9 @@
 
 
     @include('Category.addModal')
-    @include('Category.CategoryAjax')
     @include('Category.updatemodal')
+    @include('Category.CategoryAjax')
+
 </body>
 
 </html>
