@@ -114,7 +114,7 @@
                     if(res.status=='success'){
                         $('#UpdateModal').modal('hide');
                         $('#update')[0].reset();
-                        $(' .table').load(location.href + ' .table');
+                        $('.table').load(location.href + ' .table');
                     }
                 }
             })

@@ -113,7 +113,7 @@
                 },
                 success: function(res) {
                     if (res.status == 'success') {
-                        $('#updatemodal').modal('hide');
+                        $('#updateModal').modal('hide');
                         $('#update')[0].reset();
                         $('.table').load(location.href + ' .table');
                     }

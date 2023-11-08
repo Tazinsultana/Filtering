@@ -25,6 +25,7 @@
 
                 </div><br>
                 <a href="{{ route('category.index') }}" class="btn btn-primary">Back</a>
+
                 <div class="table-data">
 
 
@@ -42,8 +43,6 @@
                         <tbody>
                             @foreach ($products as $key => $product)
                                 <tr>
-
-
 
                                     <th scope="row">{{ $key + 1 }}</th>
                                     <td>{{ $product->name }}</td>
