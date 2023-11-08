@@ -25,7 +25,7 @@ class ProductController extends Controller
         $category = category::where('id', $request->category_id)->first();
         $category->products()->create([
             'name' => $name,
-            'price' => $price,
+            'Price' => $price,
             'description' => $description
         ]);
         return response()->json([
@@ -43,15 +43,30 @@ class ProductController extends Controller
     }
 
     // For Edit.....
-    public function Edit(Request $request){
+    public function Edit(Request $request)
+    {
         // // dd($request->all());
-        
-        $product=product::where('id',$request->product_id)->first();
+
+        $product = product::where('id', $request->product_id)->first();
         //  dd($product);
         return response()->json([
             'status' => 'success',
             'data' => $product
         ]);
+    }
 
+    // For Update.....
+    public function Update(Request $request)
+    {
+        // dd($request->all());
+        product::where('id', $request->product_id)->update([
+            'name'=> $request->name,
+            'price'=> $request->price,
+            'description'=> $request->description,
+            'category_id'=> $request->category_id
+        ]);
+        return response()->json([
+            'status'=> 'success',
+            ]);
     }
 }

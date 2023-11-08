@@ -33,9 +33,6 @@
                 },
                 success: function(res) {
                     if (res.status == 'success') {
-                        // $('#addModal').modal('hide');
-                        // $('#add')[0].reset();
-                        // $('.table').load(location.href + ' .table');
                         $('#addModal').modal('hide');
                         $('#add')[0].reset();
                         $('.table').load(location.href + ' .table');
@@ -74,14 +71,16 @@
         })
 
         // For Edit Product......
-        $(document).on('click','.product_edit',function(e){
+        $(document).on('click', '.product_edit', function(e) {
             e.preventDefault();
-            let product_id=$(this).data('id');
+            let product_id = $(this).data('id');
             $.ajax({
-                url:"{{ route('product.edit') }}",
-                method:'GET',
-                data:{product_id},
-                success:function(res){
+                url: "{{ route('product.edit') }}",
+                method: 'GET',
+                data: {
+                    product_id
+                },
+                success: function(res) {
                     console.log(res);
                     $('#update_id').val(res.data.id);
                     $('#up_name').val(res.data.name);
@@ -90,6 +89,36 @@
                     $('#up_product_category').val(res.data.category_id);
                 }
             })
+        })
+
+        // For Update....
+        $(document).on('click', '.product_update', function(e) {
+            e.preventDefault();
+            let product_id = $('#update_id').val();
+            let name = $('#up_name').val();
+            let price = $('#up_price').val();
+            let description = $('#up_description').val();
+            let category_id = $('#up_product_category').val();
+            $.ajax({
+                url: "{{ route('product.update') }}",
+                method: 'PUT',
+                data: {
+                    product_id,
+                    name,
+                    price,
+                    description,
+                    category_id,
+
+                },
+                success:function(res){
+                    if(res.status=='success'){
+                        $('#UpdateModal').modal('hide');
+                        $('#update')[0].reset();
+                        $(' .table').load(location.href + ' .table');
+                    }
+                }
+            })
+
         })
 
     })
