@@ -12,4 +12,7 @@ class category extends Model
         'title',
         'is_active'
     ];
+    public function products(){
+        return $this->hasMany(Product::class);
+    }
 }
