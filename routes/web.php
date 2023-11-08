@@ -27,4 +27,5 @@ Route::put('/update',[CategoryController::class,'Update'])->name('category.updat
 
 // For Product.....
 Route::get('/product',[ProductController::class,'Index'])->name('product.index');
-Route::get('/product-create',[ProductController::class,'Create'])->name('product.create');
+Route::post('/product-create',[ProductController::class,'Create'])->name('product.create');
+Route::delete('/product-delete',[ProductController::class,'Delete'])->name('product.delete');

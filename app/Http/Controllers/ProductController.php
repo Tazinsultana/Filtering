@@ -11,8 +11,8 @@ class ProductController extends Controller
     public function Index()
     {
         $categories = Category::where('is_active', true)->pluck('title', 'id');
-        $products=product::latest()->with(['category'])->get();
-        return view('Products.index', compact('categories','products'));
+        $products = product::latest()->with(['category'])->get();
+        return view('Products.index', compact('categories', 'products'));
     }
 
     // For Create.....
@@ -28,6 +28,15 @@ class ProductController extends Controller
             'price' => $price,
             'description' => $description
         ]);
+        return response()->json([
+            'status' => 'success',
+        ]);
+    }
+    // For DElete.....
+    public function Delete(Request $request)
+    {
+        // dd($request->all());
+        product::where('id', $request->product_id)->delete();
         return response()->json([
             'status' => 'success',
         ]);

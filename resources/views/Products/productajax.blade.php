@@ -15,34 +15,65 @@
     $(document).ready(function() {
 
         // alert();
-        $(document).on('click','.product_add',function(e){
+        // For Create & Index......
+        $(document).on('click', '.product_add', function(e) {
             e.preventDefault();
-            let name=$('#name').val();
-            let price=$('#price').val();
-            let description=$('#description').val();
-            let category_id=$('#product_category').val();
+            let name = $('#name').val();
+            let price = $('#price').val();
+            let description = $('#description').val();
+            let category_id = $('#product_category').val();
             $.ajax({
-                url:"{{ route('product.create') }}",
-                method:'POST',
-                data:{
+                url: "{{ route('product.create') }}",
+                method: 'POST',
+                data: {
                     name,
                     price,
                     description,
                     category_id
                 },
-                success:function(res){
-                    if(res.status=='success'){
+                success: function(res) {
+                    if (res.status == 'success') {
                         $('#addModal').modal('hide');
                         $('#add')[0].reset();
                         $('.table').load(location.href + ' .table');
 
                     }
 
+                    //     $('#addModal').modal('hide');
+                    //         $('#add')[0].reset();
+                    //         $('.table').load(location.href + ' .table');
+
+
                 }
 
 
             })
 
+        })
+
+        // For Delete.....
+        $(document).on('click', '.delete_product', function(e) {
+            e.preventDefault();
+            let product_id = $(this).data('id');
+            if (confirm('Are you sure to delete product??')) {
+
+
+                $.ajax({
+                    url: "{{ route('product.delete') }}",
+                    method: 'DELETE',
+                    data: {
+                        product_id
+                    },
+                    success: function(res) {
+                        if (res.status == 'success') {
+                            $('.table').load(location.href + ' .table');
+
+                        }
+                    }
+
+
+                })
+            }
         })
 
     })

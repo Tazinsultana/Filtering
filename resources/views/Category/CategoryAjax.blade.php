@@ -35,7 +35,7 @@
                     if (res.status == 'success') {
                         $('#addModal').modal('hide');
                         $('#add')[0].reset();
-                        // $('.table').load(location.href +' .table');
+                        // $('.table').load(location.href + ' .table');
                         $('.table').load(location.href + ' .table');
 
 
@@ -98,20 +98,20 @@
         })
 
         // For Update.....
-        $(document).on('click','.up_cat',function(e){
+        $(document).on('click', '.up_cat', function(e) {
             e.preventDefault();
-            let id=$('#up_id').val();
-            let title=$('#up_title').val();
-            let is_active=$('#up_is_active').is(":checked");
+            let id = $('#up_id').val();
+            let title = $('#up_title').val();
+            let is_active = $('#up_is_active').is(":checked");
             $.ajax({
-                url:"{{ route('category.update') }}",
-                method:'PUT',
-                data:{
+                url: "{{ route('category.update') }}",
+                method: 'PUT',
+                data: {
                     id,
                     title,
                     is_active
                 },
-                success:function(res){
+                success: function(res) {
                     if (res.status == 'success') {
                         $('#updatemodal').modal('hide');
                         $('#update')[0].reset();

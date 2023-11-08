@@ -26,43 +26,43 @@
                 </div><br>
                 <a href="{{ route('product.index') }}" class="btn btn-primary">Product</a>
 
-                <div class="table-data">
 
 
-                    <table class="table my-3">
-                        <thead>
+
+                <table class="table my-3">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Is Active</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($categories as $key => $category)
                             <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Title</th>
-                                <th scope="col">Is Active</th>
-                                <th scope="col">Action</th>
+                                <th scope="row">{{ $loop->iteration }}</th>
+                                <td>{{ $category->title }}</td>
+                                <td>
+                                    @if ($category->is_active)
+                                        <span class="badge bg-success">Active</span>
+                                    @else
+                                        <span class="badge bg-danger">InActive</span>
+                                    @endif
+                                </td>
+                                <td>
+                                    <a href="" class="btn btn-secondary edit_category" data-bs-toggle="modal"
+                                        data-bs-target="#updateModal" data-id="{{ $category->id }}">Edit</a>
+                                    <a href="" class="btn btn-danger delete_category"
+                                        data-id="{{ $category->id }}">Delete</a>
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($categories as $key=> $category)
-                                <tr>
-                                    <th scope="row">{{ $loop->iteration }}</th>
-                                    <td>{{ $category->title }}</td>
-                                    <td>
-                                        @if ($category->is_active)
-                                            <span class="badge bg-success">Active</span>
-                                        @else
-                                            <span class="badge bg-danger">InActive</span>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        <a href="" class="btn btn-secondary edit_category" data-bs-toggle="modal"
-                                            data-bs-target="#updateModal" data-id="{{ $category->id }}">Edit</a>
-                                        <a href="" class="btn btn-danger delete_category"
-                                            data-id="{{ $category->id }}">Delete</a>
-                                    </td>
-                                </tr>
-                            @endforeach
+                        @endforeach
 
-                        </tbody>
-                    </table>
+                    </tbody>
+                </table>
 
-                </div>
+
 
 
             </div>
