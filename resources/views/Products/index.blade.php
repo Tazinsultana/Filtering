@@ -25,6 +25,19 @@
 
                 </div><br>
                 <a href="{{ route('category.index') }}" class="btn btn-primary">Back</a>
+                <input type="text" name="filter" id="filter" class="mb-3 my-3 form-control"
+                placeholder="Search Here..">
+
+
+                <div class="form-check my-4">
+                    {{-- @foreach ($categories as $category)  --}}
+                        @foreach ($categories as $key => $category)
+                            <label class="form-check-label" for="flexCheckIndeterminate">
+                                <input class="form-check-input" type="checkbox" name="checkbox[]"
+                                    value="{{ $key }}">{{ $category }}
+                            </label><br>
+                        @endforeach
+                </div>
 
                 <div class="table-data">
 
@@ -40,7 +53,7 @@
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="tbody">
                             @foreach ($products as $key => $product)
                                 <tr>
 

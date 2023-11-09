@@ -31,3 +31,4 @@ Route::post('/product-create',[ProductController::class,'Create'])->name('produc
 Route::delete('/product-delete',[ProductController::class,'Delete'])->name('product.delete');
 Route::get('/product-edit',[ProductController::class,'Edit'])->name('product.edit');
 Route::put('/product-update',[ProductController::class,'Update'])->name('product.update');
+Route::get('/product-filter',[ProductController::class,'Filtering'])->name('product.filter');

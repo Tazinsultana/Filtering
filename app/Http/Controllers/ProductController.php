@@ -60,13 +60,34 @@ class ProductController extends Controller
     {
         // dd($request->all());
         product::where('id', $request->product_id)->update([
-            'name'=> $request->name,
-            'price'=> $request->price,
-            'description'=> $request->description,
-            'category_id'=> $request->category_id
+            'name' => $request->name,
+            'price' => $request->price,
+            'description' => $request->description,
+            'category_id' => $request->category_id
         ]);
         return response()->json([
-            'status'=> 'success',
-            ]);
+            'status' => 'success',
+        ]);
+    }
+
+    // For Filtering.......
+    public function Filtering(Request $request)
+    {
+// dd($request->all());
+        $products = product::where('name', 'like', '%' . $request->filtering . '%')
+
+        ->where(function ($q) use ($request) {
+
+            if (isset($request->category) && (count($request->category ?? []))) {
+                $q->whereIn('category_id', $request->category);
+            }
+        })
+
+            ->orderBy('id', 'desc')->with(['category'])->first();
+
+            return response()->json([
+                'status'=> 'success',
+                'data'=> $products
+                ]);
     }
 }

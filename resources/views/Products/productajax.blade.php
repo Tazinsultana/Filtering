@@ -110,8 +110,8 @@
                     category_id,
 
                 },
-                success:function(res){
-                    if(res.status=='success'){
+                success: function(res) {
+                    if (res.status == 'success') {
                         $('#UpdateModal').modal('hide');
                         $('#update')[0].reset();
                         $('.table').load(location.href + ' .table');
@@ -120,6 +120,85 @@
             })
 
         })
+
+        // For Filtering......
+
+
+        function filtering() {
+
+            let filtering = $('#filter').val();
+
+            let categoriesObj = $('input[name="checkbox[]"]');
+            let category = [];
+
+            $.each(categoriesObj, function(key, item) {
+                // console.log(item);
+                if ($(item).is(':checked')) {
+                    const category_id = $(item).val();
+                    // console.log(category_id);
+
+                    category.push(category_id);
+                }
+                // console.log(category_id);
+            })
+            // console.log(category);
+
+            $.ajax({
+                url: "{{ route('product.filter') }}",
+                method: "GET",
+                data: {
+                    filtering,
+                    category
+                },
+                success: function(res) {
+                    // console.log(res);
+                    const search = res.data;
+
+                    // console.log(search);
+                    let r_search = '';
+                    $.each(search, function(key, item) {
+                        r_search += `
+            <tr>
+                    <th >${key+1}</th>
+                    <td>${item.name}</td>
+                    <td>${item.Price}</td>
+                    <td>${item.description}</td>
+                    <td>${item.category.title}</td>
+
+                    <td>
+                        <a href=""class="btn btn-success edit_product" data-bs-toggle="modal"
+                            data-bs-target="#upModal" data-id="${item.id}">Edit</a>
+
+                        <a href="" class="btn btn-danger delete_modal" data-id="${item.id}">Delete</a>
+                    </td>
+                </tr>`
+
+
+                    })
+
+                    $('#tbody').html(r_search);
+
+                }
+
+            })
+        }
+
+        $(document).on('keyup', '#filter', function(e) {
+            e.preventDefault();
+            filtering();
+
+
+
+        });
+
+
+        $(document).on('change', 'input[name="checkbox[]"]', function(e) {
+            e.preventDefault();
+            filtering();
+
+
+        });
+
 
     })
 </script>
