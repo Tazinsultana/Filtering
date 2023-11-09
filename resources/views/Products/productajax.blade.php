@@ -154,7 +154,7 @@
                     // console.log(res);
                     const search = res.data;
 
-                    // console.log(search);
+                    console.log(search);
                     let r_search = '';
                     $.each(search, function(key, item) {
                         r_search += `

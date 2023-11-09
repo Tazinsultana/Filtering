@@ -33,10 +33,10 @@
                 success: function(res) {
 
                     if (res.status == 'success') {
-                        $('#addModal').modal('hide');
                         $('#add')[0].reset();
                         // $('.table').load(location.href + ' .table');
                         $('.table').load(location.href + ' .table');
+                        // $('#addModal').modal('hide');
 
 
                     }

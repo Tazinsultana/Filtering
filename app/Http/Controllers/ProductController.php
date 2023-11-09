@@ -83,7 +83,7 @@ class ProductController extends Controller
             }
         })
 
-            ->orderBy('id', 'desc')->with(['category'])->first();
+            ->orderBy('id', 'desc')->with(['category'])->get();
 
             return response()->json([
                 'status'=> 'success',
