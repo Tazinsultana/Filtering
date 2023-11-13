@@ -35,7 +35,28 @@
                     if (res.status == 'success') {
                         $('#addModal').modal('hide');
                         $('#add')[0].reset();
-                        $('.table').load(location.href + ' .table');
+                        filtering();
+                        // $('.table').load(location.href + ' .table');
+                        Command: toastr["success"]("Product Added Succefully!", "Success")
+
+                        toastr.options = {
+                            "closeButton": true,
+                            "debug": false,
+                            "newestOnTop": false,
+                            "progressBar": true,
+                            "positionClass": "toast-top-right",
+                            "preventDuplicates": false,
+                            "onclick": null,
+                            "showDuration": "300",
+                            "hideDuration": "1000",
+                            "timeOut": "5000",
+                            "extendedTimeOut": "1000",
+                            "showEasing": "swing",
+                            "hideEasing": "linear",
+                            "showMethod": "fadeIn",
+                            "hideMethod": "fadeOut"
+                        }
+
 
                     }
 
@@ -60,13 +81,34 @@
                     },
                     success: function(res) {
                         if (res.status == 'success') {
-                            $('.table').load(location.href + ' .table');
+                            filtering();
+                            // $('.table').load(location.href + ' .table');
+                            Command: toastr["success"]("Product Delete Successfully!",
+                                "Success")
 
-                            filtering()
+                            toastr.options = {
+                                "closeButton": true,
+                                "debug": false,
+                                "newestOnTop": false,
+                                "progressBar": true,
+                                "positionClass": "toast-top-right",
+                                "preventDuplicates": false,
+                                "onclick": null,
+                                "showDuration": "300",
+                                "hideDuration": "1000",
+                                "timeOut": "5000",
+                                "extendedTimeOut": "1000",
+                                "showEasing": "swing",
+                                "hideEasing": "linear",
+                                "showMethod": "fadeIn",
+                                "hideMethod": "fadeOut"
+                            }
+
+                            // filtering()
                         }
 
                     }
-                    // filtering();
+
 
 
                 })
@@ -90,9 +132,9 @@
                     $('#up_price').val(res.data.Price);
                     $('#up_description').val(res.data.description);
                     $('#up_product_category').val(res.data.category_id);
-                    filtering()
+                    // filtering()
                 }
-                // filtering();
+
             })
         })
 
@@ -119,10 +161,31 @@
                     if (res.status == 'success') {
                         $('#UpdateModal').modal('hide');
                         $('#update')[0].reset();
-                        $('.table').load(location.href + ' .table');
+                        filtering();
+                        Command: toastr["success"]("Product Updated Successfully!",
+                            "Success")
+
+                        toastr.options = {
+                            "closeButton": true,
+                            "debug": false,
+                            "newestOnTop": false,
+                            "progressBar": true,
+                            "positionClass": "toast-top-right",
+                            "preventDuplicates": false,
+                            "onclick": null,
+                            "showDuration": "300",
+                            "hideDuration": "1000",
+                            "timeOut": "5000",
+                            "extendedTimeOut": "1000",
+                            "showEasing": "swing",
+                            "hideEasing": "linear",
+                            "showMethod": "fadeIn",
+                            "hideMethod": "fadeOut"
+                        }
+                        // $('.table').load(location.href + ' .table');
                     }
                 }
-                // filtering();
+
             })
 
         })
