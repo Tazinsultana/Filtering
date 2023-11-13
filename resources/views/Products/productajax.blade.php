@@ -3,6 +3,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
 </script>
+<script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
 <script>
     $.ajaxSetup({
         headers: {
@@ -35,8 +36,9 @@
                     if (res.status == 'success') {
                         $('#addModal').modal('hide');
                         $('#add')[0].reset();
-                        filtering();
+
                         // $('.table').load(location.href + ' .table');
+                        filtering();
                         Command: toastr["success"]("Product Added Succefully!", "Success")
 
                         toastr.options = {
@@ -81,8 +83,9 @@
                     },
                     success: function(res) {
                         if (res.status == 'success') {
-                            filtering();
+
                             // $('.table').load(location.href + ' .table');
+                            filtering();
                             Command: toastr["success"]("Product Delete Successfully!",
                                 "Success")
 
@@ -104,7 +107,6 @@
                                 "hideMethod": "fadeOut"
                             }
 
-                            // filtering()
                         }
 
                     }
@@ -132,7 +134,7 @@
                     $('#up_price').val(res.data.Price);
                     $('#up_description').val(res.data.description);
                     $('#up_product_category').val(res.data.category_id);
-                    // filtering()
+
                 }
 
             })
@@ -162,6 +164,7 @@
                         $('#UpdateModal').modal('hide');
                         $('#update')[0].reset();
                         filtering();
+                        // $('.table').load(location.href + ' .table');
                         Command: toastr["success"]("Product Updated Successfully!",
                             "Success")
 
@@ -238,10 +241,10 @@
                     <td>${item.category.title}</td>
 
                     <td>
-                        <a href=""class="btn btn-success edit_product" data-bs-toggle="modal"
-                            data-bs-target="#upModal" data-id="${item.id}">Edit</a>
+                        <a href=""class="btn btn-success product_edit" data-bs-toggle="modal"
+                            data-bs-target="#UpdateModal" data-id="${item.id}">Edit</a>
 
-                        <a href="" class="btn btn-danger delete_modal" data-id="${item.id}">Delete</a>
+                        <a href="" class="btn btn-danger delete_product" data-id="${item.id}">Delete</a>
                     </td>
                 </tr>`
 

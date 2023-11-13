@@ -7,9 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    </script>
+
             <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
     <title>Product</title>
 </head>
@@ -39,6 +37,15 @@
                         </label><br>
                     @endforeach
                 </div>
+
+                {{-- <div style="justify-content:end"> --}}
+                    <select class="form-select" aria-label=" aria-label=".form-select-sm example" style="justify-content:end">
+                        <option selected>select Page</option>
+                        <option value="1">5</option>
+                        <option value="2">10</option>
+                        <option value="3">20</option>
+                      </select>
+                {{-- </div> --}}
 
                 <div class="table-data">
 
@@ -73,7 +80,6 @@
                                 </tr>
                             @endforeach
 
-
                         </tbody>
                     </table>
 
@@ -91,7 +97,6 @@
             </div>
         </div>
     </div>
-
 
     @include('Products.productmodal')
     @include('Products.updatemodal')
