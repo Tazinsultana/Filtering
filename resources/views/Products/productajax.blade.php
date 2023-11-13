@@ -127,6 +127,7 @@
         function filtering() {
 
             let filtering = $('#filter').val();
+            // let category=$('#product_category').val();
 
             let categoriesObj = $('input[name="checkbox[]"]');
             let category = [];
@@ -141,7 +142,7 @@
                 }
                 // console.log(category_id);
             })
-            // console.log(category);
+            console.log(category);
 
             $.ajax({
                 url: "{{ route('product.filter') }}",
@@ -151,7 +152,7 @@
                     category
                 },
                 success: function(res) {
-                    // console.log(res);
+                    console.log(res);
                     const search = res.data;
 
                     console.log(search);

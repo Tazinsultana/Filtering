@@ -75,11 +75,24 @@ class ProductController extends Controller
     {
 // dd($request->all());
         $products = product::where('name', 'like', '%' . $request->filtering . '%')
+    //  for  checkbox filtering...
 
         ->where(function ($q) use ($request) {
 
             if (isset($request->category) && (count($request->category ?? []))) {
                 $q->whereIn('category_id', $request->category);
+            }
+        })
+        // by title filtering...
+        // ->orWhereHas('category',function ($q) use ($request) {
+        //         $q->where('title','like','%'.$request->filtering.'%');
+        //         if ($request->category) {
+        //             $q->where('id', $request->category);
+        //         }
+        //     })
+        ->where(function($q) use($request){
+            if(isset($request->category) &&(count($request->category ?? []))){
+        $q->whereIn('category_id',$request->category);
             }
         })
 
@@ -91,3 +104,4 @@ class ProductController extends Controller
                 ]);
     }
 }
+
