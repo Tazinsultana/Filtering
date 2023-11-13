@@ -64,6 +64,7 @@
 
                         }
                     }
+                    // filtering();
 
 
                 })
@@ -88,6 +89,7 @@
                     $('#up_description').val(res.data.description);
                     $('#up_product_category').val(res.data.category_id);
                 }
+                // filtering();
             })
         })
 
@@ -117,6 +119,7 @@
                         $('.table').load(location.href + ' .table');
                     }
                 }
+                // filtering();
             })
 
         })
@@ -124,13 +127,14 @@
         // For Filtering......
 
 
-        function filtering() {
+        function filtering(page = 0) {
 
             let filtering = $('#filter').val();
             // let category=$('#product_category').val();
 
             let categoriesObj = $('input[name="checkbox[]"]');
             let category = [];
+            // const page = $(this).data('page');
 
             $.each(categoriesObj, function(key, item) {
                 // console.log(item);
@@ -142,20 +146,21 @@
                 }
                 // console.log(category_id);
             })
-            console.log(category);
+            // console.log(category);
 
             $.ajax({
                 url: "{{ route('product.filter') }}",
                 method: "GET",
                 data: {
                     filtering,
-                    category
+                    category,
+                    page
                 },
                 success: function(res) {
-                    console.log(res);
+                    // console.log(res);
                     const search = res.data;
 
-                    console.log(search);
+                    // console.log(search);
                     let r_search = '';
                     $.each(search, function(key, item) {
                         r_search += `
@@ -178,6 +183,14 @@
                     })
 
                     $('#tbody').html(r_search);
+                    // For Pagination....
+                    let pagination = '';
+                    for (let page = 1; page <= res.total_page; page++) {
+                        pagination += `
+                        <a href="" class="btn btn-sm btn-secondary pagination-item"
+                                data-page="${page-1}">${page}</a>`;
+                    }
+                    $('#pagination_container').html(pagination);
 
                 }
 
@@ -187,8 +200,6 @@
         $(document).on('keyup', '#filter', function(e) {
             e.preventDefault();
             filtering();
-
-
 
         });
 
@@ -200,6 +211,11 @@
 
         });
 
+        $(document).on('click', '.pagination-item', function(e) {
+            e.preventDefault();
+            const page = $(this).data('page');
+            filtering();
+        })
 
     })
 </script>

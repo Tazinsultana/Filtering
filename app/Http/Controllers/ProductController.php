@@ -10,9 +10,13 @@ class ProductController extends Controller
 {
     public function Index()
     {
+        $page=0;
+        $item=5;
         $categories = Category::where('is_active', true)->pluck('title', 'id');
-        $products = product::latest()->with(['category'])->get();
-        return view('Products.index', compact('categories', 'products'));
+        $products = product::latest()->with(['category'])->skip($page*$item)->take($item)->get();
+        $total_item=Product::count();
+        $total_page=(int)ceil($total_item/$item);
+        return view('Products.index', compact('categories', 'products','total_page'));
     }
 
     // For Create.....
@@ -73,6 +77,9 @@ class ProductController extends Controller
     // For Filtering.......
     public function Filtering(Request $request)
     {
+
+        $page=$request->page;
+        $item=5;
 // dd($request->all());
         $products = product::where('name', 'like', '%' . $request->filtering . '%')
     //  for  checkbox filtering...
@@ -96,11 +103,15 @@ class ProductController extends Controller
             }
         })
 
-            ->orderBy('id', 'desc')->with(['category'])->get();
+            ->orderBy('id', 'desc')->with(['category'])->skip($page*$item)->take($item)->get();
+            $total_count=product::where('name','like', '%'. $request->filtering . '%')->count();
+            $total_page=(int)ceil($total_count/$item);
+            // dd($total_page);
 
             return response()->json([
                 'status'=> 'success',
-                'data'=> $products
+                'data'=> $products,
+                'total_page'=>$total_page,
                 ]);
     }
 }
