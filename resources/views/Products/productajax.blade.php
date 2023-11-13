@@ -199,6 +199,7 @@
         function filtering(page = 0) {
 
             let filtering = $('#filter').val();
+            let page_view=$('#page_view').val();
             // let category=$('#product_category').val();
 
             let categoriesObj = $('input[name="checkbox[]"]');
@@ -223,7 +224,8 @@
                 data: {
                     filtering,
                     category,
-                    page
+                    page,
+                    page_view,
                 },
                 success: function(res) {
                     // console.log(res);
@@ -289,5 +291,11 @@
             filtering(page);
         })
 
+        $(document).on('change','#page_view',function(e){
+            e.preventDefault();
+
+            // console.log(page_view);
+            filtering();
+        })
     })
 </script>

@@ -79,7 +79,7 @@ class ProductController extends Controller
     {
 
         $page=$request->page;
-        $item=5;
+        $item=$request->page_view??5;
 // dd($request->all());
         $products = product::where('name', 'like', '%' . $request->filtering . '%')
     //  for  checkbox filtering...

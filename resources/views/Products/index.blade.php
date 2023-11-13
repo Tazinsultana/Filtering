@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-            <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
     <title>Product</title>
 </head>
 
@@ -39,13 +39,16 @@
                 </div>
 
                 {{-- <div style="justify-content:end"> --}}
-                    <select class="form-select" aria-label=" aria-label=".form-select-sm example" style="justify-content:end">
-                        <option selected>select Page</option>
-                        <option value="1">5</option>
-                        <option value="2">10</option>
-                        <option value="3">20</option>
-                      </select>
-                {{-- </div> --}}
+                <div style="display:flex; justify-content:flex-end;">
+                    <select id="page_view" class="form-select" style="width:100px;">
+                        <option selected value="">Page</option>
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                    </select>
+                </div>
+
+
 
                 <div class="table-data">
 
