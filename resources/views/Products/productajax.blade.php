@@ -62,7 +62,9 @@
                         if (res.status == 'success') {
                             $('.table').load(location.href + ' .table');
 
+                            filtering()
                         }
+
                     }
                     // filtering();
 
@@ -88,6 +90,7 @@
                     $('#up_price').val(res.data.Price);
                     $('#up_description').val(res.data.description);
                     $('#up_product_category').val(res.data.category_id);
+                    filtering()
                 }
                 // filtering();
             })
@@ -183,14 +186,17 @@
                     })
 
                     $('#tbody').html(r_search);
+
                     // For Pagination....
+
                     let pagination = '';
                     for (let page = 1; page <= res.total_page; page++) {
                         pagination += `
-                        <a href="" class="btn btn-sm btn-secondary pagination-item"
+                        <a href="" class="btn btn-sm btn-secondary pagination_item"
                                 data-page="${page-1}">${page}</a>`;
                     }
                     $('#pagination_container').html(pagination);
+                    // console.log(pagination);
 
                 }
 
@@ -211,10 +217,10 @@
 
         });
 
-        $(document).on('click', '.pagination-item', function(e) {
+        $(document).on('click', '.pagination_item', function(e) {
             e.preventDefault();
             const page = $(this).data('page');
-            filtering();
+            filtering(page);
         })
 
     })
